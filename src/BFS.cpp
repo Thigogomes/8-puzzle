@@ -7,7 +7,7 @@
 
 using namespace std;
 
-string s = "123405678";  // Estado inicial
+string inicial = "123405678";  // Estado inicial
 
 unordered_map<string, string> parent;  // <Child, Parent>
 
@@ -47,7 +47,7 @@ void showPath(string s, string inicial, int depth){
     }
 
     showPath(parent[s], inicial, depth - 1);
-    cout << "profundidade: " << depth << "\n";
+    cout << "Profundidade: " << depth << "\n";
     printState(s);
 }
 
@@ -99,7 +99,7 @@ void bfs(string s){
         if(isGoal(current.state)){
             cout << "\nObjetivo encontrado!\n";
 
-            showPath(current.state, s, current.depth);
+            showPath(current.state, inicial, current.depth);
 
             cout << "\nEm movimentos: " << current.depth << endl;
             return;
@@ -120,6 +120,6 @@ void bfs(string s){
 }
 
 int main(){
-    bfs(s);
+    bfs(inicial);
     return 0;
 }
