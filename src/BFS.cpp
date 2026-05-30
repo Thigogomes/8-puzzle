@@ -4,10 +4,31 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <windows.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-string inicial = "123405678";  // Estado inicial
+vector<string> estadosPossiveis = {
+    "123456780",
+    "123456708",
+    "123450786",
+    "123405678",
+    "103425678",
+    "120453786",
+    "125340678",
+    "281043765",
+    "724506831",
+    "867254301"
+};
+
+string escolherEstado()
+{
+    return estadosPossiveis[rand() % estadosPossiveis.size()];
+}
+
+string inicial;  // Estado inicial aleatório
 
 unordered_map<string, string> parent;  // <Child, Parent>
 
@@ -97,11 +118,11 @@ void bfs(string s){
         q.pop();
 
         if(isGoal(current.state)){
-            cout << "\nObjetivo encontrado!\n";
+            cout << "\nObjetivo encontrado!";
+            cout << "\nEm movimentos: " << current.depth << "\n" <<endl;
 
             showPath(current.state, inicial, current.depth);
 
-            cout << "\nEm movimentos: " << current.depth << endl;
             return;
         }
 
@@ -116,10 +137,18 @@ void bfs(string s){
         }
     }
 
-    cout << "Sem solução.\n";
+    cout << "\nBusca em Largura (BFS) concluída.\n\n";
+    printState(s);
+    cout << "Esse estado inicial não possui solução.\n" << endl;
 }
 
 int main(){
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+
+    srand(time(nullptr));
+    inicial = estadosPossiveis[rand() % estadosPossiveis.size()];
+
     bfs(inicial);
     return 0;
 }
