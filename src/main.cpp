@@ -2,6 +2,11 @@
 #include <conio.h>
 #include <windows.h>
 #include <string>
+#include <cstdlib>
+#include <ctime>
+#include "headers/puzzle.h"
+#include "headers/BFS.h"
+#include "headers/aEstrela.h"
 
 using namespace std;
 
@@ -46,15 +51,13 @@ int main() {
             // heuristica == 2 → h2: Distancia de Manhattan
             // heuristica == 3 → h3: Conflito Linear
 
-            // TODO: astar(estadoInicial, heuristica);
+            //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
 
-            cout << "[A* - heuristica " << heuristica << "] ainda nao implementado\n";
+            aStarLinearConflict(estadoInicial);
             break;
 
         case 2:
-            // TODO: bfs(estadoInicial);
-
-            cout << "[BFS] ainda nao implementado\n";
+            bfs(estadoInicial);
             break;
 
         case 3:
