@@ -3,11 +3,13 @@
 #include <vector>
 #include <unordered_map>
 
-extern std::string inicial;
-extern std::unordered_map<std::string, std::string> parent;
+using namespace std;
 
-bool isGoal(const std::string& s);
-int findBlank(const std::string& s);
-void printState(const std::string& s);
-void showPath(const std::string& s, const std::string& ini, int depth);
-std::vector<std::string> generateMoves(const std::string& s);
+extern string inicial;
+extern unordered_map<string, string> parent;
+
+bool isGoal(const string& s);
+int findBlank(const string& s);
+void printState(const string& s);
+void showPath(const string& s, const string& ini, int depth);
+vector<string> generateMoves(const string& s);

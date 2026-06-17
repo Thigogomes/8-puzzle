@@ -13,7 +13,7 @@ using namespace std;
 int goalRow(char tile){ return (tile - '0') / 3; }
 int goalCol(char tile){ return (tile - '0') % 3; }
 
-int manhattan(const string& s){
+int h2_manhattan(const string& s){
     int dist = 0;
     for(int i = 0; i < 9; i++){
         if(s[i] == '0') continue;
@@ -60,7 +60,7 @@ int conflictCol(const string& s){
 }
 
 int h3_linearConflict(const string& s){
-    return manhattan(s)
+    return h2_manhattan(s)
          + 2 * conflictRow(s)
          + 2 * conflictCol(s);
 }
@@ -120,6 +120,54 @@ void aStarLinearConflict(const string& s){
     }
 
     cout << "\nBusca A* (Conflito Linear) concluida.\n\n";
+    printState(s);
+    cout << "Esse estado inicial nao possui solucao.\n" << endl;
+}
+
+void aStarManhattan(const string& s){
+    auto startTime = chrono::high_resolution_clock::now();
+
+    parent.clear();
+
+    priority_queue<NodeAS, vector<NodeAS>, greater<NodeAS>> pq;
+    unordered_map<string, int> gScore;
+    int visitados = 0;
+
+    pq.push({s, 0, h2_manhattan(s)});
+    gScore[s] = 0;
+
+    while(!pq.empty()){
+        NodeAS current = pq.top();
+        pq.pop();
+
+        if(current.g > gScore[current.state]) continue;
+
+        visitados++;
+
+        if(isGoal(current.state)){
+            auto endTime = chrono::high_resolution_clock::now();
+            double ms = chrono::duration<double, milli>(endTime - startTime).count();
+
+            cout << "\nObjetivo encontrado!";
+            cout << "\nEm movimentos:   " << current.g;
+            cout << "\nNos visitados:   " << visitados;
+            cout << "\nTempo:           " << ms << " ms\n" << endl;
+
+            showPath(current.state, inicial, current.g);
+            return;
+        }
+
+        for(const string& next : generateMoves(current.state)){
+            int newG = current.g + 1;
+            if(gScore.find(next) == gScore.end() || newG < gScore[next]){
+                gScore[next] = newG;
+                parent[next] = current.state;
+                pq.push({next, newG, h2_manhattan(next)});
+            }
+        }
+    }
+
+    cout << "\nBusca A* (Manhattan) concluida.\n\n";
     printState(s);
     cout << "Esse estado inicial nao possui solucao.\n" << endl;
 }

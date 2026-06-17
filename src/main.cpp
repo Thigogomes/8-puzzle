@@ -53,7 +53,16 @@ int main() {
 
             //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
 
-            aStarLinearConflict(estadoInicial);
+                if(heuristica == 1) {
+                    cout << "Executando A* com heurística Hamming...\n";
+                    cout << "[A* - Hamming] ainda nao implementado\n";
+                } else if(heuristica == 2) {
+                    cout << "Executando A* com heurística Manhattan...\n";
+                    aStarManhattan(estadoInicial);
+                } else if(heuristica == 3) {
+                    cout << "Executando A* com heurística Conflito Linear...\n";
+                    aStarLinearConflict(estadoInicial);
+                }
             break;
 
         case 2:
