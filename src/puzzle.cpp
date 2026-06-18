@@ -31,7 +31,7 @@ void printState(const string& s){
 
 void showPath(const string& s, const string& ini, int depth){
     if(s == ini){
-        cout << "Estado inicial:\n";
+        cout << "Profundidade: " << depth << "\n";
         printState(s);
         return;
     }

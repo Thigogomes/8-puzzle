@@ -28,31 +28,32 @@ int main() {
 
     system("pause");
 
-    string estadoInicial = recebeEstadoInicial();
+    while(true){
 
-    cout << "Estado inicial:\n";
-    printTabuleiro(estadoInicial);
-    cout << endl;
+        string estadoInicial = recebeEstadoInicial();
 
-    int algoritmo = menuAlgoritmo();
+        cout << "Estado inicial:\n";
+        printTabuleiro(estadoInicial);
+        cout << endl;
 
-    int heuristica = -1;
-    if(algoritmo == 1 || algoritmo == 5)
-        heuristica = menuHeuristica();
+        int algoritmo = menuAlgoritmo();
 
-    system("cls");
-    cout << "Estado inicial:\n";
-    printTabuleiro(estadoInicial);
-    cout << endl;
+        int heuristica = -1;
+        if(algoritmo == 1 || algoritmo == 5)
+            heuristica = menuHeuristica();
 
+        system("cls");
+        cout << "Estado inicial:\n";
+        printTabuleiro(estadoInicial);
+        cout << endl;
 
-    switch(algoritmo){
-        case 1:
-            // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
-            // heuristica == 2 → h2: Distancia de Manhattan
-            // heuristica == 3 → h3: Conflito Linear
+        switch(algoritmo){
+            case 1:
+                // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
+                // heuristica == 2 → h2: Distancia de Manhattan
+                // heuristica == 3 → h3: Conflito Linear
 
-            //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
+                //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
 
                 if(heuristica == 1) {
                     cout << "Executando A* com heurística Hamming...\n";
@@ -95,6 +96,7 @@ int main() {
                 greedyLinearConflict(estadoInicial);
             }
             break;
+        }
     }
 
     return 0;
