@@ -31,6 +31,7 @@ int main() {
     while(true){
 
         string estadoInicial = recebeEstadoInicial();
+        inicial = estadoInicial;
 
         cout << "Estado inicial:\n";
         printTabuleiro(estadoInicial);
