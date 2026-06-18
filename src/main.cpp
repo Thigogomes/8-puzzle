@@ -27,69 +27,78 @@ int main() {
 
     system("pause");
 
-    string estadoInicial = recebeEstadoInicial();
+    while(true){
 
-    cout << "Estado inicial:\n";
-    printTabuleiro(estadoInicial);
-    cout << endl;
+        string estadoInicial = recebeEstadoInicial();
 
-    int algoritmo = menuAlgoritmo();
+        cout << "Estado inicial:\n";
+        printTabuleiro(estadoInicial);
+        cout << endl;
 
-    int heuristica = -1;
-    if(algoritmo == 1 || algoritmo == 5)
-        heuristica = menuHeuristica();
+        int algoritmo = menuAlgoritmo();
 
-    system("cls");
-    cout << "Estado inicial:\n";
-    printTabuleiro(estadoInicial);
-    cout << endl;
+        int heuristica = -1;
+        if(algoritmo == 1 || algoritmo == 5)
+            heuristica = menuHeuristica();
 
+        system("cls");
+        cout << "Estado inicial:\n";
+        printTabuleiro(estadoInicial);
+        cout << endl;
 
-    switch(algoritmo){
-        case 1:
-            // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
-            // heuristica == 2 → h2: Distancia de Manhattan
-            // heuristica == 3 → h3: Conflito Linear
+        switch(algoritmo){
+            case 1:
+                // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
+                // heuristica == 2 → h2: Distancia de Manhattan
+                // heuristica == 3 → h3: Conflito Linear
 
-            //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
+                //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
 
-                if(heuristica == 1) {
-                    cout << "Executando A* com heurística Hamming...\n";
-                    cout << "[A* - Hamming] ainda nao implementado\n";
-                } else if(heuristica == 2) {
-                    cout << "Executando A* com heurística Manhattan...\n";
-                    aStarManhattan(estadoInicial);
-                } else if(heuristica == 3) {
-                    cout << "Executando A* com heurística Conflito Linear...\n";
-                    aStarLinearConflict(estadoInicial);
-                }
+                    if(heuristica == 1) {
+                        cout << "Executando A* com heurística Hamming...\n";
+                        cout << "[A* - Hamming] ainda nao implementado\n";
+                    } else if(heuristica == 2) {
+                        cout << "Executando A* com heurística Manhattan...\n";
+                        aStarManhattan(estadoInicial);
+                    } else if(heuristica == 3) {
+                        cout << "Executando A* com heurística Conflito Linear...\n";
+                        aStarLinearConflict(estadoInicial);
+                    }
+                break;
+
+            case 2:
+                bfs(estadoInicial);
+                break;
+
+            case 3:
+                // TODO: dfs(estadoInicial);
+
+                cout << "[DFS] ainda nao implementado\n";
+                break;
+
+            case 4:
+                // TODO: custoUniforme(estadoInicial);
+
+                cout << "[Custo Uniforme] ainda nao implementado\n";
+                break;
+
+            case 5:
+                // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
+                // heuristica == 2 → h2: Distancia de Manhattan
+                // heuristica == 3 → h3: Conflito Linear
+
+                // TODO: gulosa(estadoInicial, heuristica);
+
+                cout << "[Gulosa - heuristica " << heuristica << "] ainda nao implementado\n";
+                break;
+        }
+        cout << "Deseja resolver outro estado? (Digite 's' para continuar): ";
+        char resposta; 
+        cin >> resposta;
+        if(resposta != 's' && resposta != 'S') {    
+            cout << "Encerrando o programa. Obrigado por jogar!\n";
             break;
-
-        case 2:
-            bfs(estadoInicial);
-            break;
-
-        case 3:
-            // TODO: dfs(estadoInicial);
-
-            cout << "[DFS] ainda nao implementado\n";
-            break;
-
-        case 4:
-            // TODO: custoUniforme(estadoInicial);
-
-            cout << "[Custo Uniforme] ainda nao implementado\n";
-            break;
-
-        case 5:
-            // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
-            // heuristica == 2 → h2: Distancia de Manhattan
-            // heuristica == 3 → h3: Conflito Linear
-
-            // TODO: gulosa(estadoInicial, heuristica);
-
-            cout << "[Gulosa - heuristica " << heuristica << "] ainda nao implementado\n";
-            break;
+        }
     }
 
     return 0;
