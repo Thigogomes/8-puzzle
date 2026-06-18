@@ -7,6 +7,7 @@
 #include "headers/puzzle.h"
 #include "headers/BFS.h"
 #include "headers/aEstrela.h"
+#include "headers/greedy.h"
 
 using namespace std;
 
@@ -82,13 +83,17 @@ int main() {
             break;
 
         case 5:
-            // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
-            // heuristica == 2 → h2: Distancia de Manhattan
-            // heuristica == 3 → h3: Conflito Linear
 
-            // TODO: gulosa(estadoInicial, heuristica);
-
-            cout << "[Gulosa - heuristica " << heuristica << "] ainda nao implementado\n";
+            if(heuristica == 1) {
+                cout << "Executando Gulosa com heurística Hamming...\n";
+                greedyHamming(estadoInicial);
+            } else if(heuristica == 2) {
+                cout << "Executando Gulosa com heurística Manhattan...\n";
+                greedyManhattan(estadoInicial);
+            } else if(heuristica == 3) {
+                cout << "Executando Gulosa com heurística Conflito Linear...\n";
+                greedyLinearConflict(estadoInicial);
+            }
             break;
     }
 
