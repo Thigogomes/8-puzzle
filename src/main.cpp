@@ -97,6 +97,15 @@ int main() {
             }
             break;
         }
+
+        cout << "Deseja resolver outro estado? (Digite 's' para continuar): ";
+        char resposta; 
+        cin >> resposta;
+        if(resposta != 's' && resposta != 'S') {
+            cout << "Encerrando o programa. Obrigado por jogar!\n";
+            break;
+        }
+
     }
 
     return 0;
