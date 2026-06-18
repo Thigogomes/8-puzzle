@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <vector>
 #include <string>
+#include <chrono>
 
 using namespace std;
 
@@ -14,6 +15,8 @@ struct NodeBFS {
 };
 
 void bfs(const string& s){
+    inicial = s;
+    auto startTime = chrono::high_resolution_clock::now();
     queue<NodeBFS> q;
     unordered_set<string> visited;
 
@@ -25,8 +28,13 @@ void bfs(const string& s){
         q.pop();
 
         if(isGoal(current.state)){
+            auto endTime = chrono::high_resolution_clock::now();
+            double ms = chrono::duration<double, milli>(endTime - startTime).count();
+
             cout << "\nObjetivo encontrado!";
-            cout << "\nEm movimentos: " << current.depth << "\n" << endl;
+            cout << "\nEm movimentos: " << current.depth << endl;
+            cout << "Tempo de execução: " << ms << " ms\n" << endl;
+
             showPath(current.state, inicial, current.depth);
             return;
         }
@@ -42,5 +50,5 @@ void bfs(const string& s){
 
     cout << "\nBusca em Largura (BFS) concluída.\n\n";
     printState(s);
-    cout << "Esse estado inicial não possui solução.\n" << endl;
+    cout << "\nEsse estado inicial não possui solução.\n" << endl;
 }
