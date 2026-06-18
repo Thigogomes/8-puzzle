@@ -5,11 +5,11 @@
 No terminal PowerShell dentro da pasta do projeto:
 
 ```powershell
-& 'g++ src/*.cpp -o src/output/puzzle.exe'
+'g++ src/*.cpp -o src/output/puzzle.exe'
 ```
 
 Depois execute:
 
 ```powershell
-& '.\src\output\puzzle.exe'
+'.\src\output\puzzle.exe'
 ```
