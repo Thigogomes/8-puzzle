@@ -49,6 +49,8 @@ int main() {
         printTabuleiro(estadoInicial);
         cout << endl;
 
+        int saida = 0;
+
         switch(algoritmo){
             case 1:
                 // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
@@ -98,8 +100,14 @@ int main() {
                 greedyLinearConflict(estadoInicial);
             }
             break;
-        }
 
+        case 6:
+            
+            saida = 1;
+            break;
+        }
+        
+        if(saida != 1){
         cout << "Deseja resolver outro estado? (Digite 's' para continuar): ";
         char resposta; 
         cin >> resposta;
@@ -107,12 +115,11 @@ int main() {
             cout << "Encerrando o programa. Obrigado por jogar!\n";
             break;
         }
-
+        }
     }
 
     return 0;
 }
-
 
 
 void printTabuleiro(string s) {
@@ -129,7 +136,6 @@ void printTabuleiro(string s) {
     }
     cout << endl;
 }
-
 
 string recebeEstadoInicial() {
     string entrada = "";
@@ -156,7 +162,6 @@ string recebeEstadoInicial() {
     return entrada;
 }
 
-
 void printTutorial() {
     system("cls");
     cout << "=== 8-Puzzle ===" << endl;
@@ -166,7 +171,6 @@ void printTutorial() {
     cout << "\nEstado objetivo:\n" << endl;
     printTabuleiro("012345678");
 }
-
 
 int menuAlgoritmo() {
     int opcao = 0;
@@ -179,19 +183,19 @@ int menuAlgoritmo() {
         cout << "  3. DFS (Busca em Profundidade)\n";
         cout << "  4. Custo Uniforme (Dijkstra)\n";
         cout << "  5. Gulosa (com heuristica)\n";
+        cout << "  6. Sair.";
         cout << "\nOpcao: ";
 
         opcao = lerOpcao();
 
-        if(opcao >= 1 && opcao <= 5) break;
+        if(opcao >= 1 && opcao <= 6) break;
 
-        cout << "Opcao invalida. Digite um numero entre 1 e 5.\n";
+        cout << "Opcao invalida. Digite um numero entre 1 e 6.\n";
         system("pause");
     }
 
     return opcao;
 }
-
 
 int lerOpcao() {
     string entrada;
