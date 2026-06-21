@@ -8,6 +8,7 @@
 #include "headers/BFS.h"
 #include "headers/aEstrela.h"
 #include "headers/greedy.h"
+#include "headers/custoUniforme.h"
 
 using namespace std;
 
@@ -79,9 +80,9 @@ int main() {
             break;
 
         case 4:
-            // TODO: custoUniforme(estadoInicial);
+            
 
-            cout << "[Custo Uniforme] ainda nao implementado\n";
+            custoUniforme(estadoInicial);
             break;
 
         case 5:
