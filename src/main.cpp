@@ -59,7 +59,7 @@ int main() {
 
                 if(heuristica == 1) {
                     cout << "Executando A* com heurística Hamming...\n";
-                    cout << "[A* - Hamming] ainda nao implementado\n";
+                    aStarHamming(estadoInicial);
                 } else if(heuristica == 2) {
                     cout << "Executando A* com heurística Manhattan...\n";
                     aStarManhattan(estadoInicial);
