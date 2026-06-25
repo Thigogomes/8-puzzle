@@ -9,6 +9,7 @@
 #include "headers/aEstrela.h"
 #include "headers/greedy.h"
 #include "headers/custoUniforme.h"
+#include "headers/DFS.h"
 
 using namespace std;
 
@@ -74,9 +75,7 @@ int main() {
             break;
 
         case 3:
-            // TODO: dfs(estadoInicial);
-
-            cout << "[DFS] ainda nao implementado\n";
+            dfs(estadoInicial);
             break;
 
         case 4:
