@@ -20,11 +20,64 @@ int menuAlgoritmo();
 int menuHeuristica();
 int lerOpcao();
 
+vector<string> estadosPossiveis = {
+    "123456780",
+    "123456708",
+    "123450786",
+    "123405678",
+    "103425678",
+    "120453786",
+    "125340678",
+    "724506831",
+    "867254301"
+};
 
+void banchMark(){
+
+    for(const string& estado : estadosPossiveis) {
+        cout << "Estado: " << estado << "\n";
+        cout << endl;
+
+        cout << "Executando BFS...\n";
+        bfs(estado);
+
+        cout << "Executando DFS...\n";
+        dfs(estado);
+
+        cout << "Executando Custo Uniforme...\n";
+        custoUniforme(estado);
+
+        cout << "Executando A* com heurística Hamming...\n";
+        aStarHamming(estado);
+
+        cout << "Executando A* com heurística Manhattan...\n";
+        aStarManhattan(estado);
+
+        cout << "Executando A* com heurística Conflito Linear...\n";
+        aStarLinearConflict(estado);
+
+        cout << "Executando Gulosa com heurística Hamming...\n";
+        greedyHamming(estado);
+
+        cout << "Executando Gulosa com heurística Manhattan...\n";
+        greedyManhattan(estado);
+
+        cout << "Executando Gulosa com heurística Conflito Linear...\n";
+        greedyLinearConflict(estado);
+    }
+
+    return;
+}
+
+bool benchMarkMode = true;
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
+    if(benchMarkMode) {
+        banchMark();
+        return 0;
+    }
     cout << "Bem vindo ao 8-Puzzle!" << endl;
     printTutorial();
 
@@ -54,12 +107,6 @@ int main() {
 
         switch(algoritmo){
             case 1:
-                // heuristica == 1 → h1: Pecas fora do lugar (Hamming)
-                // heuristica == 2 → h2: Distancia de Manhattan
-                // heuristica == 3 → h3: Conflito Linear
-
-                //Chamar a função aestrela passando o estado inicial e a heuristica escolhida
-
                 if(heuristica == 1) {
                     cout << "Executando A* com heurística Hamming...\n";
                     aStarHamming(estadoInicial);
@@ -81,8 +128,6 @@ int main() {
             break;
 
         case 4:
-            
-
             custoUniforme(estadoInicial);
             break;
 
@@ -101,7 +146,7 @@ int main() {
             break;
 
         case 6:
-            
+            cout << "Saindo do programa...\n";
             saida = 1;
             break;
         }
@@ -114,7 +159,10 @@ int main() {
             cout << "Encerrando o programa. Obrigado por jogar!\n";
             break;
         }
+        }else{
+            break;
         }
+        
     }
 
     return 0;

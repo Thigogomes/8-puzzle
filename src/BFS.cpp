@@ -19,6 +19,7 @@ void bfs(const string& s){
     auto startTime = chrono::high_resolution_clock::now();
     queue<NodeBFS> q;
     unordered_set<string> visited;
+     int visitados = 0;
 
     q.push({s, 0});
     visited.insert(s);
@@ -26,6 +27,7 @@ void bfs(const string& s){
     while(!q.empty()){
         NodeBFS current = q.front();
         q.pop();
+        visitados++;
 
         if(isGoal(current.state)){
             auto endTime = chrono::high_resolution_clock::now();
@@ -33,9 +35,10 @@ void bfs(const string& s){
 
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos: " << current.depth << endl;
-            cout << "Tempo de execução: " << ms << " ms\n" << endl;
+            cout << "\nTempo de execução: " << ms << " ms" << endl;
+            cout << "\nNos visitados:   \n" << visitados;
 
-            showPath(current.state, inicial, current.depth);
+            //showPath(current.state, inicial, current.depth);
             return;
         }
 

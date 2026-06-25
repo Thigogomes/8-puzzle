@@ -5,6 +5,7 @@
 #include <unordered_map> 
 #include <vector>
 #include <string>
+#include <chrono>
 
 using namespace std;
 
@@ -58,7 +59,7 @@ struct comparador {
 };
 
 void custoUniforme(const string& s){
-
+    auto startTime = chrono::high_resolution_clock::now();
         
     //heap que ordena os estados do menor peso para o maior
     priority_queue<NodeCustoUniforme, vector<NodeCustoUniforme>, comparador>  heap;
@@ -71,22 +72,31 @@ void custoUniforme(const string& s){
     heap.push({s,0});
     dist.insert({s,0});
 
+    int visitados = 0;
 
     //enquanto tiver nós na fila, remove o proximo nó e trabalha com ele
     while(!heap.empty()){
         
         NodeCustoUniforme current = heap.top();
         heap.pop();
-
+        visitados++;
         //caso tenha sido encontrado um mesmo estado porem com um peso mais alto (antigo) ele é desconsiderado
         if(current.weight > dist[current.state]){
         continue;
         }
 
+
         if(isGoal(current.state)){
+
+            auto endTime = chrono::high_resolution_clock::now();
+            double ms = chrono::duration<double, milli>(endTime - startTime).count();
+
+            //showPathCaminhoUniforme(current.state, inicial, current.weight);
+
             cout << "\nObjetivo encontrado!";
-            cout << "\nPeso final: " << current.weight << "\n" << endl;
-            showPathCaminhoUniforme(current.state, inicial, current.weight);
+            cout << "\nNumero de iteracoes: " << current.weight;
+            cout << "\nNos visitados:       " << visitados;
+            cout << "\nTempo:               " << ms << " ms\n" << endl;
             return;
         }
 

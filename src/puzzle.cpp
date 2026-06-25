@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -30,14 +31,45 @@ void printState(const string& s){
 }
 
 void showPath(const string& s, const string& ini, int depth){
+
+    
     if(s == ini){
         cout << "Profundidade: " << depth << "\n";
         printState(s);
         return;
     }
+    
     showPath(parent[s], ini, depth - 1);
     cout << "Profundidade: " << depth << "\n";
     printState(s);
+}
+
+void showPath2(const string& s, const string& ini, int depth) {
+    vector<string> caminho;
+    string atual = s;
+    int iteracao = 0;
+    int tamanhoVet = atual.size();
+    clock_t inicio = clock();
+
+
+
+    while (atual != ini) {
+
+        caminho.push_back(atual);
+        atual = parent.at(atual);
+        iteracao++;
+    }
+
+    
+    while ((double)(clock() - inicio) / CLOCKS_PER_SEC < 20.0) {
+    }
+
+    iteracao == 0;
+    caminho.push_back(ini);
+    for (int i = (int)caminho.size() - 1; i >= 0; i--) {
+        cout << "Profundidade: " << depth - i << "\n";
+        printState(caminho[i]);
+    }
 }
 
 vector<string> generateMoves(const string& s){

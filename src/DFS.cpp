@@ -11,7 +11,7 @@ using namespace std;
 
 struct NodeDFS {
     string state;
-    int depth;
+    double depth;
 };
 
 void dfs(const string& s){
@@ -37,12 +37,13 @@ void dfs(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
+            //showPath2(current.state, inicial, current.depth);
+
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.depth;
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            showPath(current.state, inicial, current.depth);
             return;
         }
 

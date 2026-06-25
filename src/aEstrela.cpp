@@ -46,12 +46,12 @@ void aStarLinearConflict(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
+            //showPath(current.state, inicial, current.g);
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.g;
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            showPath(current.state, inicial, current.g);
             return;
         }
 
@@ -94,12 +94,13 @@ void aStarManhattan(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
+            //showPath(current.state, inicial, current.g);
+
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.g;
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            showPath(current.state, inicial, current.g);
             return;
         }
 
@@ -147,7 +148,7 @@ void aStarHamming(const string& s){
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            showPath(current.state, inicial, current.g);
+            //showPath(current.state, inicial, current.g);
             return;
         }
 
