@@ -48,20 +48,15 @@ void showPath(const string& s, const string& ini, int depth){
 void showPath2(const string& s, const string& ini, int depth) {
     vector<string> caminho;
     string atual = s;
-    int iteracao = 0;
-    int tamanhoVet = atual.size();
     clock_t inicio = clock();
-
 
 
     while (atual != ini) {
 
         caminho.push_back(atual);
         atual = parent.at(atual);
-        iteracao++;
     }
 
-    iteracao == 0;
     caminho.push_back(ini);
     for (int i = (int)caminho.size() - 1; i >= 0; i--) {
         cout << "Profundidade: " << depth - i << "\n";
