@@ -44,6 +44,7 @@ void showPath(const string& s, const string& ini, int depth){
     printState(s);
 }
 
+//função descrita como nosso principal problema no relatorio (não tivemos muitos problemas)
 void showPath2(const string& s, const string& ini, int depth) {
     vector<string> caminho;
     string atual = s;
@@ -58,10 +59,6 @@ void showPath2(const string& s, const string& ini, int depth) {
         caminho.push_back(atual);
         atual = parent.at(atual);
         iteracao++;
-    }
-
-    
-    while ((double)(clock() - inicio) / CLOCKS_PER_SEC < 20.0) {
     }
 
     iteracao == 0;
