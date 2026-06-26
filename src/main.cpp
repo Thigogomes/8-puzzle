@@ -69,15 +69,11 @@ void banchMark(){
     return;
 }
 
-bool benchMarkMode = true;
+
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    if(benchMarkMode) {
-        banchMark();
-        return 0;
-    }
     cout << "Bem vindo ao 8-Puzzle!" << endl;
     printTutorial();
 

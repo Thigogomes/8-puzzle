@@ -37,7 +37,7 @@ void dfs(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
-            //showPath2(current.state, inicial, current.depth);
+            showPath2(current.state, inicial, current.depth);
 
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.depth;

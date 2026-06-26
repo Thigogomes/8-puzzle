@@ -91,7 +91,7 @@ void custoUniforme(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
-            //showPathCaminhoUniforme(current.state, inicial, current.weight);
+            showPathCaminhoUniforme(current.state, inicial, current.weight);
 
             cout << "\nObjetivo encontrado!";
             cout << "\nNumero de iteracoes: " << current.weight;

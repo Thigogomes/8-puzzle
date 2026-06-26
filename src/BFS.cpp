@@ -33,12 +33,14 @@ void bfs(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
+            showPath(current.state, inicial, current.depth);
+
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos: " << current.depth << endl;
             cout << "\nTempo de execução: " << ms << " ms" << endl;
             cout << "\nNos visitados:   \n" << visitados;
 
-            //showPath(current.state, inicial, current.depth);
+           
             return;
         }
 

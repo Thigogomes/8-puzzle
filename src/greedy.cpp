@@ -39,12 +39,13 @@ void greedyLinearConflict(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
+            showPath(current.state, inicial, current.depth);
+
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.depth;
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            //showPath(current.state, inicial, current.depth);
             return;
         }
 
@@ -83,12 +84,13 @@ void greedyManhattan(const string& s){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
 
+            showPath(current.state, inicial, current.depth);
+
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.depth;
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            //showPath(current.state, inicial, current.depth);
             return;
         }
 
@@ -126,13 +128,14 @@ void greedyHamming(const string& s){
         if(isGoal(current.state)){
             auto endTime = chrono::high_resolution_clock::now();
             double ms = chrono::duration<double, milli>(endTime - startTime).count();
+            
+            showPath(current.state, inicial, current.depth);
 
             cout << "\nObjetivo encontrado!";
             cout << "\nEm movimentos:   " << current.depth;
             cout << "\nNos visitados:   " << visitados;
             cout << "\nTempo:           " << ms << " ms\n" << endl;
 
-            //showPath(current.state, inicial, current.depth);
             return;
         }
 
