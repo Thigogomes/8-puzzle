@@ -120,6 +120,21 @@ int main() {
             break;
 
         case 3:
+            system("cls");
+
+            cout << "Escolha o tipo de DFS: \n\n";
+            cout << "1. DFS com profundidade máxima " << endl;
+            cout << "2. DFS sem limite de profundidade" << endl;
+            int resposta;
+            cout << "\nOpção: ";
+            cin >> resposta;
+            if(resposta == 1) {
+                limitDepth = true;
+                cout << "Digite a profundidade máxima: ";
+                maxDepth = lerOpcao();
+            } else {
+                limitDepth = false;
+            }
             dfs(estadoInicial);
             break;
 
